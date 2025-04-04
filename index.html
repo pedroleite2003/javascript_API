@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Projeto Fakestore</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    
+                  }
+                }
+              }
+            }
+        </script>
+    </head>
+    <body class="bg-black px-24 py-6">
+        <section class="bg-white p-4 rounded flex justify-between">
+            <div class="flex gap-4">
+                <input type="text" id="busca" class="border-2 border-stone-400 rounded">
+                <button class="bg-black h-[40px] text-white rounded px-6 cursor-pointer">Pesquisar</button>
+            </div>
+            <div class="flex gap-4">
+                <div>
+                    <select name="" id="categorias" class="border-2 border-stone-400 rounded h-[40px] px-4"></select>
+                </div>
+                <div>
+                    <select name="" id="ordenacao" class="border-2 border-stone-400 rounded h-[40px] px-4">
+                        <option value="avaliacao">Maior Avaliação</option>
+                        <option value="preco">Maior Avaliação</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        
+        <section id="catalogo" class="bg-white rounded p-4 mt-4 grid grid-cols-5 gap-4">
+        </section>
+        
+        <script src="index.js"></script>
+    </body>
+    </html>
