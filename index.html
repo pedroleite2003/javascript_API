@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,16 +21,19 @@
         <section class="bg-white p-4 rounded flex justify-between">
             <div class="flex gap-4">
                 <input type="text" id="busca" class="border-2 border-stone-400 rounded">
-                <button class="bg-black h-[40px] text-white rounded px-6 cursor-pointer">Pesquisar</button>
+                <button id="pesquisa" class="bg-black h-[40px] text-white rounded px-6 cursor-pointer">Pesquisar</button>
             </div>
             <div class="flex gap-4">
                 <div>
-                    <select name="" id="categorias" class="border-2 border-stone-400 rounded h-[40px] px-4"></select>
+                    <select onchange="filtrarPorCategoria(event.target.value)" id="categorias" class="border-2 border-stone-400 rounded h-[40px] px-4"></select>
                 </div>
                 <div>
-                    <select name="" id="ordenacao" class="border-2 border-stone-400 rounded h-[40px] px-4">
+                    <select onchange="ordenar(event.target.value)" id="ordenacao" class="border-2 border-stone-400 rounded h-[40px] px-4">
+                        <option disabled selected>Escolha a categoria</option>
                         <option value="avaliacao">Maior Avaliação</option>
-                        <option value="preco">Maior Avaliação</option>
+                        <option value="menoravaliacao">Menor Avaliação</option>
+                        <option value="maiorpreco">Maior preço</option>
+                        <option value="preco">Menor preço</option>
                     </select>
                 </div>
             </div>

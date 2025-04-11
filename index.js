@@ -1,3 +1,5 @@
+let produtos = []
+
 function buscarCategorias() {
     fetch("https://fakestoreapi.com/products/categories")
     .then(resposta => resposta.json())
@@ -13,14 +15,16 @@ buscarCategorias();
 function buscarProdutos() {
     fetch("https://fakestoreapi.com/products")
     .then(resposta => resposta.json())
-    .then(produtos =>{
-        carregarProdutos(produtos);
+    .then(resposta =>{
+        produtos = resposta;
+        carregarProdutos(resposta);
     })
 }
 
 buscarProdutos();
 
 function carregarProdutos(listaDeProdutos) {
+    catalogo.innerHTML = "";    
     listaDeProdutos.map(produto =>{
         catalogo.innerHTML += `
             <div class="card border border-stone-400 rounded p-4">
@@ -36,4 +40,33 @@ function carregarProdutos(listaDeProdutos) {
             </div>
         `;
     })
+}
+
+function filtrarPorCategoria(categoria){
+    let filtrados = produtos.filter(produto => produto.category == categoria);
+    carregarProdutos(filtrados);
+}
+
+function ordenar(tipo){
+    if(tipo == "avaliacao"){
+        let ordenados = produtos.toSorted((produtoA, produtoB) => produtoB.rating.rate - produtoA.rating.rate);
+        carregarProdutos(ordenados);
+    }
+    if(tipo == "preco"){
+        let ordenados = produtos.toSorted((produtoA, produtoB) => produtoA.price - produtoB.price);
+        carregarProdutos(ordenados);
+    }
+    if(tipo == "menoravaliacao"){
+        let ordenados = produtos.toSorted((produtoA, produtoB) => produtoA.rating.rate - produtoB.rating.rate);
+        carregarProdutos(ordenados);
+    }
+    if(tipo == "maiorpreco"){
+        let ordenados = produtos.toSorted((produtoA, produtoB) => produtoB.price - produtoA.price);
+        carregarProdutos(ordenados);
+    }
+}
+
+function pesquisarPeloNome(pesquisa){
+    let procurar = produtos.filter(produto => produto.title == pesquisa);
+
 }
